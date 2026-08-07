@@ -1,19 +1,30 @@
-# Virtual Environment
-.venv/
-
-# Environment Variables
-.env
-
 # Python
 __pycache__/
 *.py[cod]
 *.pyo
 
-# Database
-*.db
+# Virtual Environment
+.venv/
+venv/
 
-# IDE
+# VS Code
 .vscode/
+
+# Environment Variables
+.env
+
+# Python cache
+.pytest_cache/
+.mypy_cache/
 
 # macOS
 .DS_Store
+
+# Windows
+Thumbs.db
+
+# Uploaded files
+uploads/
+
+# Logs
+*.log.\.venv\Scripts\activate
