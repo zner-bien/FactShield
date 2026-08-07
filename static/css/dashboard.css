@@ -1,0 +1,552 @@
+/* ==========================================
+   DASHBOARD PAGE
+========================================== */
+
+.dashboard-page {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 140px 7% 80px;
+
+    z-index: 2;
+
+}
+
+/* ==========================================
+   CONTAINER
+========================================== */
+
+.dashboard-container {
+
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: auto;
+
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.dashboard-header {
+
+    text-align: center;
+
+    margin-bottom: 50px;
+
+    padding: 45px;
+
+}
+
+.dashboard-header h1 {
+
+    font-size: 3rem;
+
+    margin: 15px 0;
+
+}
+
+.dashboard-header p {
+
+    color: rgba(255,255,255,.75);
+
+    font-size: 1.1rem;
+
+    max-width: 720px;
+
+    margin: auto;
+
+    line-height: 1.8;
+
+}
+
+/* ==========================================
+   KPI CARDS
+========================================== */
+
+.dashboard-cards {
+
+    display: grid;
+
+    grid-template-columns: repeat(4,1fr);
+
+    gap: 25px;
+
+    margin-bottom: 45px;
+
+}
+
+.metric-card {
+
+    text-align: center;
+
+    padding: 35px;
+
+    transition: .35s;
+
+}
+
+.metric-card:hover {
+
+    transform: translateY(-8px);
+
+}
+
+.metric-icon {
+
+    font-size: 2.4rem;
+
+    display: block;
+
+    margin-bottom: 18px;
+
+}
+
+.metric-card h4 {
+
+    color: rgba(255,255,255,.75);
+
+    font-size: .95rem;
+
+    margin-bottom: 12px;
+
+}
+
+.metric-card h2 {
+
+    font-size: 2.4rem;
+
+    font-weight: 700;
+
+    color: white;
+
+}
+
+/* ==========================================
+   CHARTS
+========================================== */
+
+.dashboard-charts {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 30px;
+
+    margin-bottom: 45px;
+
+}
+
+.chart-card {
+
+    padding: 30px;
+
+    min-height: 420px;
+
+    transition: .35s;
+
+}
+
+.chart-card:hover {
+
+    transform: translateY(-6px);
+
+}
+
+.chart-card h2 {
+
+    color: white;
+
+    font-size: 1.3rem;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+}
+
+.chart-card canvas {
+
+    width: 100% !important;
+
+    height: 320px !important;
+
+}
+
+/* ==========================================
+   HISTORY CARD
+========================================== */
+
+.history-card {
+
+    padding: 35px;
+
+}
+
+.section-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+
+}
+
+.section-header h2 {
+
+    color: white;
+
+    font-size: 1.5rem;
+
+}
+
+.section-header span {
+
+    color: rgba(255,255,255,.70);
+
+    font-size: .95rem;
+
+}
+
+.table-container {
+
+    overflow-x: auto;
+
+}
+
+/* ==========================================
+   TABLE
+========================================== */
+
+.history-table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+}
+
+.history-table th {
+
+    background: rgba(255,255,255,.08);
+
+    color: white;
+
+    padding: 16px;
+
+    text-align: center;
+
+    font-weight: 600;
+
+}
+
+.history-table td {
+
+    padding: 15px;
+
+    text-align: center;
+
+    color: rgba(255,255,255,.88);
+
+    border-top: 1px solid rgba(255,255,255,.08);
+
+}
+
+.history-table tr:hover {
+
+    background: rgba(255,255,255,.04);
+
+}
+
+/* ==========================================
+   BADGES
+========================================== */
+
+.badge-real {
+
+    background: rgba(16,185,129,.18);
+
+    color: #10b981;
+
+    padding: 7px 16px;
+
+    border-radius: 50px;
+
+    font-weight: 600;
+
+}
+
+.badge-fake {
+
+    background: rgba(239,68,68,.18);
+
+    color: #ef4444;
+
+    padding: 7px 16px;
+
+    border-radius: 50px;
+
+    font-weight: 600;
+
+}
+
+/* ==========================================
+   EMPTY HISTORY
+========================================== */
+
+.empty-history {
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+}
+
+.empty-history h3 {
+
+    color: white;
+
+    margin-bottom: 12px;
+
+}
+
+.empty-history p {
+
+    color: rgba(255,255,255,.65);
+
+}
+
+/* ==========================================
+   GLASS CARD ENHANCEMENTS
+========================================== */
+
+.glass-card {
+
+    background: rgba(255,255,255,.08);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    border-radius: 22px;
+
+    box-shadow:
+
+        0 15px 40px rgba(0,0,0,.18),
+
+        inset 0 1px rgba(255,255,255,.08);
+
+}
+
+/* ==========================================
+   HOVER EFFECTS
+========================================== */
+
+.metric-card,
+.chart-card,
+.history-card {
+
+    transition:
+
+        transform .35s ease,
+
+        box-shadow .35s ease;
+
+}
+
+.metric-card:hover,
+.chart-card:hover,
+.history-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow:
+
+        0 20px 45px rgba(0,0,0,.30);
+
+}
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+.table-container::-webkit-scrollbar {
+
+    height: 8px;
+
+}
+
+.table-container::-webkit-scrollbar-track {
+
+    background: rgba(255,255,255,.08);
+
+    border-radius: 20px;
+
+}
+
+.table-container::-webkit-scrollbar-thumb {
+
+    background: rgba(255,255,255,.35);
+
+    border-radius: 20px;
+
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+
+    background: rgba(255,255,255,.55);
+
+}
+
+/* ==========================================
+   TABLE ROW ANIMATION
+========================================== */
+
+.history-table tbody tr {
+
+    transition:
+
+        background .25s ease,
+
+        transform .25s ease;
+
+}
+
+.history-table tbody tr:hover {
+
+    transform: scale(1.01);
+
+}
+
+/* ==========================================
+   SECTION ANIMATION
+========================================== */
+
+.dashboard-header,
+.dashboard-cards,
+.dashboard-charts,
+.history-card {
+
+    animation: fadeUp .8s ease both;
+
+}
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:1200px){
+
+    .dashboard-cards{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media (max-width:900px){
+
+    .dashboard-charts{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .dashboard-page{
+
+        padding:120px 20px 60px;
+
+    }
+
+    .dashboard-header h1{
+
+        font-size:2.2rem;
+
+    }
+
+    .dashboard-cards{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .section-header{
+
+        flex-direction:column;
+
+        gap:10px;
+
+        align-items:flex-start;
+
+    }
+
+    .history-table{
+
+        min-width:700px;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .dashboard-header{
+
+        padding:30px;
+
+    }
+
+    .metric-card{
+
+        padding:25px;
+
+    }
+
+    .chart-card{
+
+        min-height:350px;
+
+    }
+
+    .chart-card canvas{
+
+        height:250px !important;
+
+    }
+
+}

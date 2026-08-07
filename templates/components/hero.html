@@ -1,0 +1,101 @@
+<!-- ==========================================
+     HERO SECTION
+========================================== -->
+
+<section class="hero">
+
+    <div class="hero-grid">
+
+        <!-- LEFT SIDE -->
+
+        <div class="hero-left">
+
+            <span class="hero-badge">
+                AI-Powered Credibility Analysis
+            </span>
+
+            <h1>
+
+                Analyze Before
+                <span>You Believe.</span>
+
+            </h1>
+
+            <p>
+
+                FactShield is an AI-powered fake news detection and
+                credibility analysis system that helps users verify
+                online news by detecting misleading content,
+                identifying publishers, extracting publication dates,
+                and providing explainable AI predictions before
+                information is shared.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="{{ url_for('analyze') }}"
+                   class="primary-btn">
+
+                    Analyze News
+
+                </a>
+
+                <a href="#features"
+                   class="secondary-btn">
+
+                    Learn More
+
+                </a>
+
+            </div>
+
+            <div class="hero-stats">
+
+                <div class="stat-card glass-card">
+
+                    <h2>99%</h2>
+
+                    <span>
+                        Target Accuracy
+                    </span>
+
+                </div>
+
+                <div class="stat-card glass-card">
+
+                    <h2>AI</h2>
+
+                    <span>
+                        Explainable Results
+                    </span>
+
+                </div>
+
+                <div class="stat-card glass-card">
+
+                    <h2>24/7</h2>
+
+                    <span>
+                        Instant Analysis
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+
+        <div class="hero-right">
+
+            <img
+                src="{{ url_for('static', filename='images/hero-shield.png') }}"
+                alt="FactShield Hero">
+
+        </div>
+
+    </div>
+
+</section>

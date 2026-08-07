@@ -1,0 +1,94 @@
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <!-- ==========================================
+        LOGO
+        =========================================== -->
+
+        <a href="{{ url_for('home') }}"
+           class="logo">
+
+            <img src="{{ url_for('static', filename='images/factshield-logo.png') }}"
+                 alt="FactShield Logo">
+
+            <span>
+
+                FactShield
+
+            </span>
+
+        </a>
+
+        <!-- ==========================================
+        NAVIGATION LINKS
+        =========================================== -->
+
+        <ul class="nav-links">
+
+            <li>
+
+                <a href="{{ url_for('home') }}">
+
+                    Home
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="{{ url_for('home') }}#features">
+
+                    Features
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="{{ url_for('home') }}#about">
+
+                    About
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="{{ url_for('analyze') }}">
+
+                    Analyze
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="{{ url_for('dashboard') }}">
+
+                    Dashboard
+
+                </a>
+
+            </li>
+
+        </ul>
+
+        <!-- ==========================================
+        ACTION BUTTON
+        =========================================== -->
+
+        <a href="{{ url_for('analyze') }}"
+           class="login-btn">
+
+            Analyze Now
+
+        </a>
+
+    </div>
+
+</nav>

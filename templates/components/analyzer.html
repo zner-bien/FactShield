@@ -1,0 +1,133 @@
+<section class="analyzer-page">
+
+    <div class="analyzer-container glass-card">
+
+        <div class="analyzer-header">
+
+            <span class="section-tag">
+                AI ANALYZER
+            </span>
+
+            <h1>
+                Analyze News Credibility
+            </h1>
+
+            <p>
+                Paste article text, enter a news URL, or upload a supported
+                document to let FactShield analyze its credibility.
+            </p>
+
+        </div>
+
+        <form action="{{ url_for('analyze_article') }}"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <!-- Tabs -->
+
+            <div class="analyzer-tabs">
+
+                <button type="button"
+                        class="tab-btn active"
+                        data-tab="text">
+
+                    <i data-lucide="file-text"></i>
+
+                    <span>Paste Text</span>
+
+                </button>
+
+                <button type="button"
+                        class="tab-btn"
+                        data-tab="url">
+
+                    <i data-lucide="link"></i>
+
+                    <span>Article URL</span>
+
+                </button>
+
+                <button type="button"
+                        class="tab-btn"
+                        data-tab="upload">
+
+                    <i data-lucide="upload"></i>
+
+                    <span>Upload File</span>
+
+                </button>
+
+            </div>
+
+            <!-- TEXT -->
+
+            <div class="tab-content active"
+                 id="text">
+
+                <textarea
+                    name="article_text"
+                    rows="14"
+                    placeholder="Paste the full news article here..."></textarea>
+
+            </div>
+
+            <!-- URL -->
+
+            <div class="tab-content"
+                 id="url">
+
+                <input
+                    type="url"
+                    name="article_url"
+                    placeholder="https://example.com/news/article">
+
+            </div>
+
+            <!-- UPLOAD -->
+
+            <div class="tab-content"
+                 id="upload">
+
+                <div class="upload-box">
+
+                    <i data-lucide="cloud-upload"></i>
+
+                    <h3>
+                        Drag & Drop Files
+                    </h3>
+
+                    <p>
+                        or click to browse
+                    </p>
+
+                    <input
+                        type="file"
+                        name="article_file"
+                        accept=".txt,.pdf,.doc,.docx">
+
+                    <small>
+
+                        Supported:
+                        TXT • PDF • DOC • DOCX
+
+                    </small>
+
+                </div>
+
+            </div>
+
+            <button
+                type="submit"
+                class="analyze-btn">
+
+                <i data-lucide="shield-check"></i>
+
+                Analyze Credibility
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>

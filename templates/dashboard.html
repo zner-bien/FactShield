@@ -1,0 +1,544 @@
+{% extends "base.html" %}
+
+{% block title %}
+FactShield Dashboard
+{% endblock %}
+
+{% block head %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+{% endblock %}
+
+{% block content %}
+
+<!-- ==========================================
+BACKGROUND
+========================================== -->
+
+<div class="background-gradient"></div>
+
+<canvas id="particles-canvas"></canvas>
+
+<div class="gradient-orb orb-1"></div>
+<div class="gradient-orb orb-2"></div>
+<div class="gradient-orb orb-3"></div>
+
+<div id="cursor-glow"></div>
+
+{% include "components/navbar.html" %}
+
+<!-- ==========================================
+DASHBOARD
+========================================== -->
+
+<section class="dashboard-page">
+
+    <div class="dashboard-container">
+
+        <!-- ==========================================
+        HERO
+        =========================================== -->
+
+        <div class="dashboard-header glass-card">
+
+            <span class="section-tag">
+
+                ANALYTICS CENTER
+
+            </span>
+
+            <h1>
+
+                FactShield Dashboard
+
+            </h1>
+
+            <p>
+
+                Monitor fake news detection statistics,
+                AI performance,
+                and historical analysis results in one place.
+
+            </p>
+
+        </div>
+
+        <!-- ==========================================
+        KPI CARDS
+        =========================================== -->
+
+        <div class="dashboard-cards">
+
+            <div class="glass-card metric-card">
+
+                <span class="metric-icon">📄</span>
+
+                <h4>
+
+                    Total Analyses
+
+                </h4>
+
+                <h2>
+
+                    {{ analytics.total }}
+
+                </h2>
+
+            </div>
+
+            <div class="glass-card metric-card">
+
+                <span class="metric-icon">✅</span>
+
+                <h4>
+
+                    Real News
+
+                </h4>
+
+                <h2>
+
+                    {{ analytics.real }}
+
+                </h2>
+
+            </div>
+
+            <div class="glass-card metric-card">
+
+                <span class="metric-icon">⚠️</span>
+
+                <h4>
+
+                    Fake News
+
+                </h4>
+
+                <h2>
+
+                    {{ analytics.fake }}
+
+                </h2>
+
+            </div>
+
+            <div class="glass-card metric-card">
+
+                <span class="metric-icon">🎯</span>
+
+                <h4>
+
+                    Avg. Confidence
+
+                </h4>
+
+                <h2>
+
+                    {{ "%.1f"|format(analytics.avg_confidence) }}%
+
+                </h2>
+
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+        CHARTS
+        =========================================== -->
+
+        <div class="dashboard-charts">
+
+            <div class="glass-card chart-card">
+
+                <h2>
+
+                    Prediction Distribution
+
+                </h2>
+
+                <canvas id="predictionChart"></canvas>
+
+            </div>
+
+            <div class="glass-card chart-card">
+
+                <h2>
+
+                    Average Analysis Scores
+
+                </h2>
+
+                <canvas id="scoreChart"></canvas>
+
+            </div>
+
+        </div>
+
+                <!-- ==========================================
+        RECENT ANALYSIS
+        =========================================== -->
+
+        <div class="glass-card history-card">
+
+            <div class="section-header">
+
+                <h2>
+
+                    Recent Analysis History
+
+                </h2>
+
+                <span>
+
+                    {{ analytics.total }} Total Analyses
+
+                </span>
+
+            </div>
+
+            {% if analytics.history %}
+
+            <div class="table-container">
+
+                <table class="history-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Date</th>
+
+                            <th>Prediction</th>
+
+                            <th>Confidence</th>
+
+                            <th>Credibility</th>
+
+                            <th>Publisher</th>
+
+                            <th>Clickbait</th>
+
+                            <th>Bias</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for item in analytics.history %}
+
+                        <tr>
+
+                            <td>
+
+                                {{ item.date }}
+
+                            </td>
+
+                            <td>
+
+                                {% if item.prediction == "REAL" %}
+
+                                    <span class="badge-real">
+
+                                        ✅ REAL
+
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="badge-fake">
+
+                                        ⚠️ FAKE
+
+                                    </span>
+
+                                {% endif %}
+
+                            </td>
+
+                            <td>
+
+                                {{ "%.2f"|format(item.confidence) }}%
+
+                            </td>
+
+                            <td>
+
+                                {{ "%.2f"|format(item.credibility) }}%
+
+                            </td>
+
+                            <td>
+
+                                {{ item.publisher }}
+
+                            </td>
+
+                            <td>
+
+                                {{ item.clickbait }}%
+
+                            </td>
+
+                            <td>
+
+                                {{ item.bias }}%
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            {% else %}
+
+            <div class="empty-history">
+
+                <h3>
+
+                    No Analysis History
+
+                </h3>
+
+                <p>
+
+                    Analyze your first article to populate the dashboard.
+
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+CHART.JS
+========================================== -->
+
+<script>
+
+const dashboardData = JSON.parse('{{ analytics | tojson | safe }}');
+
+// ==========================================
+// Prediction Distribution
+// ==========================================
+
+new Chart(
+
+    document.getElementById("predictionChart"),
+
+    {
+
+        type: "doughnut",
+
+        data: {
+
+            labels: [
+
+                "Real",
+
+                "Fake"
+
+            ],
+
+            datasets: [{
+
+                data: [
+
+                    dashboardData.real,
+
+                    dashboardData.fake
+
+                ],
+
+                backgroundColor: [
+
+                    "#10b981",
+
+                    "#ef4444"
+
+                ],
+
+                borderWidth: 0,
+
+                hoverOffset: 12
+
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            cutout: "70%",
+
+            plugins: {
+
+                legend: {
+
+                    position: "bottom",
+
+                    labels: {
+
+                        color: "#ffffff",
+
+                        padding: 20
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+);
+
+// ==========================================
+// Average Scores
+// ==========================================
+
+new Chart(
+
+    document.getElementById("scoreChart"),
+
+    {
+
+        type: "bar",
+
+        data: {
+
+            labels: [
+
+                "Confidence",
+
+                "Credibility",
+
+                "Clickbait",
+
+                "Bias"
+
+            ],
+
+            datasets: [{
+
+                label: "Average Score",
+
+                data: [
+
+                    dashboardData.avg_confidence,
+
+                    dashboardData.avg_credibility,
+
+                    dashboardData.avg_clickbait,
+
+                    dashboardData.avg_bias
+
+                ],
+
+                borderRadius: 12,
+
+                backgroundColor: [
+
+                    "#3b82f6",
+
+                    "#10b981",
+
+                    "#f59e0b",
+
+                    "#ef4444"
+
+                ]
+
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
+
+                    display: false
+
+                }
+
+            },
+
+            scales: {
+
+                y: {
+
+                    beginAtZero: true,
+
+                    max: 100,
+
+                    ticks: {
+
+                        color: "#ffffff"
+
+                    },
+
+                    grid: {
+
+                        color: "rgba(255,255,255,.08)"
+
+                    }
+
+                },
+
+                x: {
+
+                    ticks: {
+
+                        color: "#ffffff"
+
+                    },
+
+                    grid: {
+
+                        display: false
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+);
+
+</script>
+
+{% endblock %}

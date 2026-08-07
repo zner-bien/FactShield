@@ -1,0 +1,119 @@
+[
+    {
+        "date": "2026-08-07 11:34",
+        "prediction": "FAKE",
+        "confidence": 66.0,
+        "credibility": 66.0,
+        "publisher": "Rappler",
+        "clickbait": 5,
+        "bias": 0
+    },
+    {
+        "date": "2026-08-07 11:31",
+        "prediction": "FAKE",
+        "confidence": 55.14,
+        "credibility": 55.14,
+        "publisher": "Philstar",
+        "clickbait": 5,
+        "bias": 0
+    },
+    {
+        "date": "2026-08-02 20:46",
+        "prediction": "REAL",
+        "confidence": 51.46,
+        "credibility": 51.46,
+        "publisher": "Gmanetwork",
+        "clickbait": 5,
+        "bias": 0
+    },
+    {
+        "date": "2026-08-02 20:46",
+        "prediction": "FAKE",
+        "confidence": 61.72,
+        "credibility": 61.72,
+        "publisher": "Not Available",
+        "clickbait": 15,
+        "bias": 0
+    },
+    {
+        "date": "2026-08-02 20:45",
+        "prediction": "FAKE",
+        "confidence": 62.44,
+        "credibility": 62.44,
+        "publisher": "Not Available",
+        "clickbait": 25,
+        "bias": 0
+    },
+    {
+        "date": "2026-07-31 16:36",
+        "prediction": "FAKE",
+        "confidence": 58.17,
+        "credibility": 58.17,
+        "publisher": "Bandera",
+        "clickbait": 0,
+        "bias": 0
+    },
+    {
+        "date": "2026-07-31 16:36",
+        "prediction": "FAKE",
+        "confidence": 60.35,
+        "credibility": 60.35,
+        "publisher": "Not Available",
+        "clickbait": 0,
+        "bias": 0
+    },
+    {
+        "date": "2026-07-31 16:36",
+        "prediction": "FAKE",
+        "confidence": 74.06,
+        "credibility": 74.06,
+        "publisher": "Not Available",
+        "clickbait": 0,
+        "bias": 0
+    },
+    {
+        "date": "2026-07-31 16:29",
+        "prediction": "REAL",
+        "confidence": 59.72,
+        "credibility": 59.72,
+        "publisher": "Mb",
+        "clickbait": 0,
+        "bias": 5
+    },
+    {
+        "date": "2026-07-31 16:10",
+        "prediction": "REAL",
+        "confidence": 59.72,
+        "credibility": 59.72,
+        "publisher": "Mb",
+        "clickbait": 0,
+        "bias": 5
+    },
+    {
+        "date": "2026-07-31 16:00",
+        "prediction": "REAL",
+        "confidence": 59.72,
+        "credibility": 59.72,
+        "publisher": "Mb",
+        "clickbait": 0,
+        "bias": 5
+    },
+    {
+        "date": "2026-07-31 15:59",
+        "prediction": "REAL",
+        "confidence": 60.31,
+        "credibility": 60.31,
+        "publisher": "Not Available",
+        "clickbait": 0,
+        "bias": 5
+    },
+    {
+        "date": "2026-07-31 10:45",
+        "prediction": "REAL",
+        "confidence": 76.29,
+        "credibility": 76.29,
+        "publisher": "Interaksyon",
+        "clickbait": 15,
+        "bias": 5
+    }
+]

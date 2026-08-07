@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+Analyze News | FactShield
+{% endblock %}
+
+{% block head %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/analyze.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+<!-- Background -->
+
+<div class="background-gradient"></div>
+
+<canvas id="particles-canvas"></canvas>
+
+<div class="gradient-orb orb-1"></div>
+<div class="gradient-orb orb-2"></div>
+<div class="gradient-orb orb-3"></div>
+
+<div id="cursor-glow"></div>
+
+{% include "components/navbar.html" %}
+
+{% include "components/analyzer.html" %}
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="{{ url_for('static', filename='js/analyze.js') }}"></script>
+
+{% endblock %}

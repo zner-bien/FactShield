@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+FactShield
+{% endblock %}
+
+{% block content %}
+
+<!-- Background -->
+<div class="background-gradient"></div>
+
+<canvas id="particles-canvas"></canvas>
+
+<div class="gradient-orb orb-1"></div>
+<div class="gradient-orb orb-2"></div>
+<div class="gradient-orb orb-3"></div>
+
+<div id="cursor-glow"></div>
+
+<!-- Components -->
+{% include "components/navbar.html" %}
+{% include "components/hero.html" %}
+{% include "components/features.html" %}
+{% include "components/workflow.html" %}
+{% include "components/about.html" %}
+{% include "components/faq.html" %}
+{% include "components/cta.html" %}
+{% include "components/footer.html" %}
+
+{% endblock %}

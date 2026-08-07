@@ -1,0 +1,369 @@
+/* ==========================================
+   REPORT PAGE
+========================================== */
+
+.report-page {
+    min-height: 100vh;
+    padding: 140px 8% 80px;
+    position: relative;
+    z-index: 2;
+}
+
+.report-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.report-header {
+    text-align: center;
+    padding: 45px;
+    margin-bottom: 40px;
+}
+
+.report-header h1 {
+    font-size: 2.8rem;
+    margin: 20px 0;
+}
+
+.report-header p {
+    color: #cbd5e1;
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.8;
+}
+
+/* ==========================================
+   VERDICT
+========================================== */
+
+.report-verdict {
+    text-align: center;
+    padding: 45px;
+    margin-bottom: 40px;
+}
+
+.verdict-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+.report-verdict h2 {
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+}
+
+.report-verdict p {
+    color: #94a3b8;
+}
+
+/* ==========================================
+   GRID
+========================================== */
+
+.report-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    padding: 30px;
+    text-align: center;
+}
+
+.stat-card h3 {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.stat-card h2 {
+    font-size: 2rem;
+    color: white;
+}
+
+/* ==========================================
+   CONTENT CARDS
+========================================== */
+
+.glass-card {
+    margin-bottom: 35px;
+}
+
+.glass-card h2 {
+    margin-bottom: 20px;
+}
+
+/* ==========================================
+   AI ASSESSMENT
+========================================== */
+
+.assessment-list {
+    list-style: none;
+    padding: 0;
+}
+
+.assessment-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    color: #cbd5e1;
+}
+
+.assessment-list li:last-child {
+    border-bottom: none;
+}
+
+/* ==========================================
+   ARTICLE
+========================================== */
+
+.article-preview {
+    max-height: 400px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    line-height: 1.9;
+    color: #dbeafe;
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.04);
+}
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.report-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.primary-btn,
+.secondary-btn {
+
+    padding: 15px 30px;
+
+    border-radius: 14px;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: .3s;
+
+}
+
+.primary-btn {
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+
+    color: white;
+
+}
+
+.primary-btn:hover {
+
+    transform: translateY(-3px);
+
+}
+
+.secondary-btn {
+
+    border: 1px solid rgba(255,255,255,.2);
+
+    color: white;
+
+}
+
+.secondary-btn:hover {
+
+    background: rgba(255,255,255,.08);
+
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:1000px){
+
+    .report-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media (max-width:700px){
+
+    .report-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .report-header h1{
+
+        font-size:2rem;
+
+    }
+
+}
+
+/* ==========================================
+   BADGES
+========================================== */
+
+.verdict-badge{
+
+    display:inline-block;
+
+    padding:10px 22px;
+
+    border-radius:999px;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+.success{
+
+    background:#22c55e;
+
+    color:white;
+
+}
+
+.danger{
+
+    background:#ef4444;
+
+    color:white;
+
+}
+
+/* ==========================================
+   PROGRESS BAR
+========================================== */
+
+.progress-bar{
+
+    width:100%;
+
+    height:12px;
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:999px;
+
+    margin-top:18px;
+
+    overflow:hidden;
+
+}
+
+.progress-fill{
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        90deg,
+        #2563eb,
+        #7c3aed
+    );
+
+}
+
+.progress-fill.credibility{
+
+    background:linear-gradient(
+        90deg,
+        #10b981,
+        #22c55e
+    );
+
+}
+
+/* ==========================================
+   EXPLAINABLE AI
+========================================== */
+
+.explanation-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+    gap: 24px;
+
+    margin-top: 20px;
+
+}
+
+.explanation-card {
+
+    background: rgba(255,255,255,.04);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 18px;
+
+    padding: 24px;
+
+}
+
+.keyword-list {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 16px;
+
+}
+
+.keyword {
+
+    padding: 10px 16px;
+
+    border-radius: 999px;
+
+    font-size: .9rem;
+
+    font-weight: 600;
+
+}
+
+.keyword.real {
+
+    background: rgba(34,197,94,.15);
+
+    color: #4ade80;
+
+}
+
+.keyword.fake {
+
+    background: rgba(239,68,68,.15);
+
+    color: #f87171;
+
+}

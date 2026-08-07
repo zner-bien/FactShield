@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- ==========================================
+         META
+    =========================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <!-- ==========================================
+         PAGE TITLE
+    =========================================== -->
+    <title>{% block title %}FactShield{% endblock %}</title>
+
+    <!-- ==========================================
+         FAVICON
+    =========================================== -->
+    <link rel="icon"
+          type="image/x-icon"
+          href="{{ url_for('static', filename='images/factshield-favicon.ico') }}">
+
+    <!-- ==========================================
+         TAILWIND CSS
+    =========================================== -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ==========================================
+         TAILWIND CONFIG
+    =========================================== -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#3B82F6",
+                        secondary: "#8B5CF6",
+                        accent: "#06B6D4",
+                        background: "#020617"
+                    },
+                    fontFamily: {
+                        outfit: ["Outfit", "sans-serif"]
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- ==========================================
+         GOOGLE FONTS
+    =========================================== -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <!-- ==========================================
+         LUCIDE ICONS
+    =========================================== -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- ==========================================
+         GLOBAL CSS
+    =========================================== -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/navbar.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/buttons.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/home.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/particles.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/cursor.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/animations.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/responsive.css') }}">
+
+    <!-- ==========================================
+         PAGE-SPECIFIC CSS
+    =========================================== -->
+    {% block head %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+    <!-- ==========================================
+         PAGE CONTENT
+    =========================================== -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- ==========================================
+         GLOBAL JAVASCRIPT
+    =========================================== -->
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/cursor.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/animation.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/demo.js') }}"></script>
+
+    <!-- ==========================================
+         PAGE-SPECIFIC JAVASCRIPT
+    =========================================== -->
+    {% block scripts %}
+    {% endblock %}
+
+    <!-- ==========================================
+         INITIALIZE LUCIDE ICONS
+    =========================================== -->
+    <script>
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+    </script>
+
+</body>
+
+</html>

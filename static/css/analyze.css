@@ -1,0 +1,391 @@
+/* ==========================================
+   ANALYZE PAGE
+========================================== */
+
+.analyzer-page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 140px 7% 80px;
+
+    position: relative;
+
+    z-index: 5;
+
+}
+
+.analyzer-container {
+
+    width: 100%;
+
+    max-width: 950px;
+
+    padding: 50px;
+
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.analyzer-header {
+
+    text-align: center;
+
+    margin-bottom: 40px;
+
+}
+
+.analyzer-header h1 {
+
+    font-size: 3rem;
+
+    color: white;
+
+    margin: 20px 0;
+
+    font-weight: 700;
+
+}
+
+.analyzer-header p {
+
+    color: #CBD5E1;
+
+    max-width: 650px;
+
+    margin: auto;
+
+    line-height: 1.8;
+
+}
+
+/* ==========================================
+   TABS
+========================================== */
+
+.analyzer-tabs {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-bottom: 35px;
+
+    flex-wrap: wrap;
+
+}
+
+.tab-btn {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 14px 22px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: rgba(255,255,255,.05);
+
+    color: #CBD5E1;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    font-family: inherit;
+
+    font-size: .95rem;
+
+}
+
+.tab-btn:hover {
+
+    transform: translateY(-3px);
+
+    border-color: rgba(96,165,250,.4);
+
+}
+
+.tab-btn.active {
+
+    background: linear-gradient(
+        135deg,
+        #2563EB,
+        #8B5CF6
+    );
+
+    color: white;
+
+}
+
+/* ==========================================
+   TAB CONTENT
+========================================== */
+
+.tab-content {
+
+    display: none;
+
+    animation: fadeTab .35s ease;
+
+}
+
+.tab-content.active {
+
+    display: block;
+
+}
+
+/* ==========================================
+   TEXTAREA
+========================================== */
+
+textarea {
+
+    width: 100%;
+
+    background: rgba(255,255,255,.05);
+
+    color: white;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    resize: vertical;
+
+    font-size: 1rem;
+
+    outline: none;
+
+    transition: .3s;
+
+    font-family: inherit;
+
+}
+
+textarea:focus {
+
+    border-color: #3B82F6;
+
+}
+
+/* ==========================================
+   URL INPUT
+========================================== */
+
+input[type="url"] {
+
+    width: 100%;
+
+    padding: 18px 20px;
+
+    background: rgba(255,255,255,.05);
+
+    color: white;
+
+    border-radius: 16px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    outline: none;
+
+    font-size: 1rem;
+
+}
+
+input[type="url"]:focus {
+
+    border-color: #3B82F6;
+
+}
+
+/* ==========================================
+   UPLOAD
+========================================== */
+
+.upload-box {
+
+    border: 2px dashed rgba(255,255,255,.15);
+
+    border-radius: 24px;
+
+    text-align: center;
+
+    padding: 60px 30px;
+
+    transition: .3s;
+
+    cursor: pointer;
+
+}
+
+.upload-box:hover {
+
+    border-color: #3B82F6;
+
+    background: rgba(59,130,246,.05);
+
+}
+
+.upload-box svg {
+
+    width: 52px;
+
+    height: 52px;
+
+    color: #60A5FA;
+
+    margin-bottom: 20px;
+
+}
+
+.upload-box h3 {
+
+    color: white;
+
+    margin-bottom: 12px;
+
+}
+
+.upload-box p {
+
+    color: #CBD5E1;
+
+}
+
+.upload-box small {
+
+    display: block;
+
+    margin-top: 18px;
+
+    color: #94A3B8;
+
+}
+
+.upload-box input {
+
+    display: none;
+
+}
+
+/* ==========================================
+   BUTTON
+========================================== */
+
+.analyze-btn {
+
+    margin-top: 35px;
+
+    width: 100%;
+
+    padding: 18px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    background: linear-gradient(
+        135deg,
+        #2563EB,
+        #8B5CF6
+    );
+
+    color: white;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    transition: .3s;
+
+}
+
+.analyze-btn:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 12px 35px rgba(59,130,246,.30);
+
+}
+
+/* ==========================================
+   ANIMATION
+========================================== */
+
+@keyframes fadeTab {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+    .analyzer-container{
+
+        padding:30px;
+
+    }
+
+    .analyzer-header h1{
+
+        font-size:2.2rem;
+
+    }
+
+}
+
+.dragover{
+
+    border-color:#3B82F6;
+
+    background:rgba(59,130,246,.08);
+
+}

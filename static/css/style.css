@@ -1,0 +1,110 @@
+/* ===========================
+   FACTSHIELD GLOBAL STYLES
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Outfit',sans-serif;
+
+    overflow-x:hidden;
+
+    background:#020617;
+
+    color:white;
+
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:40px;
+
+}
+
+.hero-content h1{
+
+    font-size:4rem;
+
+    font-weight:800;
+
+}
+
+.hero-content p{
+
+    margin-top:20px;
+
+    font-size:1.3rem;
+
+    color:#cbd5e1;
+
+}
+
+/* ==========================
+   GLOBAL
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+:root{
+
+    --primary:#3B82F6;
+    --secondary:#8B5CF6;
+
+    --background:#020617;
+
+    --glass:rgba(255,255,255,.08);
+
+    --border:rgba(255,255,255,.12);
+
+    --text:#F8FAFC;
+
+    --muted:#94A3B8;
+
+}
+
+body{
+
+    background:var(--background);
+
+    color:var(--text);
+
+    font-family:'Outfit',sans-serif;
+
+    overflow-x:hidden;
+
+    position:relative;
+
+    min-height:100vh;
+
+}

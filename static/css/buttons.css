@@ -1,0 +1,47 @@
+.primary-btn{
+
+    background:#2563EB;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:15px 32px;
+
+    border-radius:14px;
+
+    transition:.3s;
+
+    font-weight:600;
+
+}
+
+.primary-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.secondary-btn{
+
+    border:1px solid rgba(255,255,255,.2);
+
+    padding:15px 32px;
+
+    border-radius:14px;
+
+    color:white;
+
+    text-decoration:none;
+
+    backdrop-filter:blur(10px);
+
+    transition:.3s;
+
+}
+
+.secondary-btn:hover{
+
+    background:rgba(255,255,255,.08);
+
+}

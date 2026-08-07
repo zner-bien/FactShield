@@ -1,0 +1,132 @@
+<!-- ==========================================
+     INTERACTIVE DEMO
+========================================== -->
+
+<section id="demo" class="demo">
+
+    <div class="section-header">
+
+        <span class="section-tag">
+
+            LIVE DEMO
+
+        </span>
+
+        <h2>
+
+            Experience FactShield
+
+        </h2>
+
+        <p>
+
+            See how FactShield analyzes articles by using this interactive
+            demonstration with sample results.
+
+        </p>
+
+    </div>
+
+    <div class="demo-container glass-card">
+
+        <textarea
+            id="demoText"
+            placeholder="Paste a news article here..."></textarea>
+
+        <button
+            id="demoButton"
+            class="primary-btn">
+
+            Analyze Demo
+
+        </button>
+
+        <div id="demoResult"
+             class="demo-result">
+
+            <div class="result-item">
+
+                <h4>Prediction</h4>
+
+                <span class="real">
+
+                    Likely Real
+
+                </span>
+
+            </div>
+
+            <div class="result-item">
+
+                <h4>Credibility</h4>
+
+                <span>
+
+                    96%
+
+                </span>
+
+            </div>
+
+            <div class="result-item">
+
+                <h4>Publisher</h4>
+
+                <span>
+
+                    Philippine News Agency
+
+                </span>
+
+            </div>
+
+            <div class="result-item">
+
+                <h4>Published</h4>
+
+                <span>
+
+                    July 28, 2026
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     CTA
+========================================== -->
+
+<section class="cta">
+
+    <div class="glass-card cta-card">
+
+        <h2>
+
+            Ready to Verify News with AI?
+
+        </h2>
+
+        <p>
+
+            Analyze articles, identify publishers,
+            extract publication dates,
+            and receive AI-powered credibility reports.
+
+        </p>
+
+        <a href="{{ url_for('analyze') }}"
+           class="primary-btn">
+
+            Start Analyzing
+
+        </a>
+
+    </div>
+
+</section>

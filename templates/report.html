@@ -1,0 +1,684 @@
+{% extends "base.html" %}
+
+{% block title %}
+FactShield Report
+{% endblock %}
+
+{% block head %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/report.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+<!-- ==========================================
+BACKGROUND
+========================================== -->
+
+<div class="background-gradient"></div>
+
+<canvas id="particles-canvas"></canvas>
+
+<div class="gradient-orb orb-1"></div>
+<div class="gradient-orb orb-2"></div>
+<div class="gradient-orb orb-3"></div>
+
+<div id="cursor-glow"></div>
+
+{% include "components/navbar.html" %}
+
+<!-- ==========================================
+REPORT
+========================================== -->
+
+<section class="report-page">
+
+    <div class="report-container">
+
+        <!-- ==========================================
+        ERROR MESSAGE
+        =========================================== -->
+
+        {% if error_message is defined and error_message %}
+
+        <div class="glass-card error-card">
+
+            <h2>
+
+                ⚠ Unable to Analyze Article
+
+            </h2>
+
+            <p style="white-space: pre-line;">
+
+                {{ error_message }}
+
+            </p>
+
+        </div>
+
+        {% endif %}
+
+        <!-- ==========================================
+        HEADER
+        =========================================== -->
+
+        <div class="report-header glass-card">
+
+            <span class="section-tag">
+
+                AI ANALYSIS REPORT
+
+            </span>
+
+            <h1>
+
+                FactShield Analysis Results
+
+            </h1>
+
+            <p>
+
+                Your submitted article has been analyzed using
+                Natural Language Processing (NLP),
+                TF-IDF Vectorization,
+                Linear Support Vector Machine (Linear SVM),
+                Clickbait Detection,
+                Bias Detection,
+                Source Reputation Analysis,
+                and additional AI-powered credibility analysis.
+
+            </p>
+
+        </div>
+
+        <!-- ==========================================
+        VERDICT
+        =========================================== -->
+
+        <div class="report-verdict glass-card">
+
+            {% if prediction == "REAL" %}
+
+                <div class="verdict-badge success">
+
+                    ✅ VERIFIED NEWS
+
+                </div>
+
+            {% elif prediction == "FAKE" %}
+
+                <div class="verdict-badge danger">
+
+                    ⚠️ POTENTIALLY FAKE
+
+                </div>
+
+            {% else %}
+
+                <div class="verdict-badge neutral">
+
+                    ℹ️ ANALYSIS NOT AVAILABLE
+
+                </div>
+
+            {% endif %}
+
+            <h2>
+
+                {{ prediction }}
+
+            </h2>
+
+            <p>
+
+                Classification generated using
+                FactShield's Machine Learning
+                detection model.
+
+            </p>
+
+        </div>
+
+        <!-- ==========================================
+        STATISTICS
+        =========================================== -->
+
+        <div class="report-grid">
+
+                        <!-- Confidence -->
+
+            <div class="glass-card stat-card">
+
+                <h3>
+
+                    Confidence Score
+
+                </h3>
+
+                <h2>
+
+                    {{ "%.2f"|format(confidence) }}%
+
+                </h2>
+
+                <div class="progress-bar">
+
+                    <div class="progress-fill"
+                         data-progress="{{ confidence }}">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Credibility -->
+
+            <div class="glass-card stat-card">
+
+                <h3>
+
+                    Credibility Score
+
+                </h3>
+
+                <h2>
+
+                    {{ "%.2f"|format(credibility) }}%
+
+                </h2>
+
+                <div class="progress-bar">
+
+                    <div class="progress-fill credibility"
+                         data-progress="{{ credibility }}">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Publisher -->
+
+            <div class="glass-card stat-card">
+
+                <h3>
+
+                    Publisher
+
+                </h3>
+
+                <h2>
+
+                    {{ publisher }}
+
+                </h2>
+
+            </div>
+
+            <!-- Publish Date -->
+
+            <div class="glass-card stat-card">
+
+                <h3>
+
+                    Published Date
+
+                </h3>
+
+                <h2>
+
+                    {{ publish_date }}
+
+                </h2>
+
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+        SOURCE REPUTATION
+        =========================================== -->
+
+        <div class="glass-card">
+
+            <h2>
+
+                Source Reputation
+
+            </h2>
+
+            <p>
+
+                <strong>Domain:</strong>
+
+                {{ reputation.domain if reputation else "Not Available" }}
+
+            </p>
+
+            <p>
+
+                <strong>Status:</strong>
+
+                {{ reputation.rating if reputation else "Unknown" }}
+
+            </p>
+
+            <p>
+
+                <strong>Reliability:</strong>
+
+                {% if reputation %}
+
+                    {% for i in range(reputation.stars) %}
+
+                        ⭐
+
+                    {% endfor %}
+
+                    {% if reputation.stars == 0 %}
+
+                        Not Rated
+
+                    {% endif %}
+
+                {% else %}
+
+                    Not Rated
+
+                {% endif %}
+
+            </p>
+
+        </div>
+
+        <!-- ==========================================
+        CLICKBAIT ANALYSIS
+        =========================================== -->
+
+        <div class="glass-card">
+
+            <h2>
+
+                Clickbait Analysis
+
+            </h2>
+
+            <p>
+
+                <strong>Clickbait Score:</strong>
+
+                {{ clickbait.score }}%
+
+            </p>
+
+            <div class="progress-bar">
+
+                <div class="progress-fill"
+                     data-progress="{{ clickbait.score }}">
+
+                </div>
+
+            </div>
+
+            <p>
+
+                <strong>Risk Level:</strong>
+
+                {{ clickbait.risk }}
+
+            </p>
+
+            {% if clickbait.matches %}
+
+                <h3>
+
+                    Detected Phrases
+
+                </h3>
+
+                <ul class="assessment-list">
+
+                    {% for phrase in clickbait.matches %}
+
+                        <li>
+
+                            {{ phrase }}
+
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% else %}
+
+                <p>
+
+                    No common clickbait phrases were detected.
+
+                </p>
+
+            {% endif %}
+
+        </div>
+
+                <!-- ==========================================
+        BIAS ANALYSIS
+        =========================================== -->
+
+        <div class="glass-card">
+
+            <h2>
+
+                Bias Analysis
+
+            </h2>
+
+            <p>
+
+                <strong>Bias Score:</strong>
+
+                {{ bias.score if bias else 0 }}%
+
+            </p>
+
+            <div class="progress-bar">
+
+                <div class="progress-fill"
+                     data-progress="{{ bias.score if bias else 0 }}">
+
+                </div>
+
+            </div>
+
+            <p>
+
+                <strong>Bias Level:</strong>
+
+                {{ bias.level if bias else "Unknown" }}
+
+            </p>
+
+            {% if bias and bias.matches %}
+
+                <h3>
+
+                    Loaded Words Detected
+
+                </h3>
+
+                <ul class="assessment-list">
+
+                    {% for word in bias.matches %}
+
+                        <li>
+
+                            {{ word }}
+
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% else %}
+
+                <p>
+
+                    No significant emotionally loaded words were detected.
+
+                </p>
+
+            {% endif %}
+
+        </div>
+
+        <!-- ==========================================
+        EXPLAINABLE AI
+        ========================================== -->
+
+        <div class="glass-card">
+
+            <h2>
+
+                Explainable AI
+
+            </h2>
+
+            <p>
+
+                The following keywords had the strongest influence on
+                the AI model when classifying this article.
+
+            </p>
+
+            <div class="explanation-grid">
+
+                <!-- REAL INDICATORS -->
+
+                <div class="explanation-card">
+
+                    <h3>
+
+                        🟢 Words Supporting REAL News
+
+                    </h3>
+
+                    {% if explanation.real %}
+
+                        <div class="keyword-list">
+
+                            {% for word in explanation.real %}
+
+                                <span class="keyword real">
+
+                                    {{ word }}
+
+                                </span>
+
+                            {% endfor %}
+
+                        </div>
+
+                    {% else %}
+
+                        <p>
+
+                            No strong indicators found.
+
+                        </p>
+
+                    {% endif %}
+
+                </div>
+
+                <!-- FAKE INDICATORS -->
+
+                <div class="explanation-card">
+
+                    <h3>
+
+                        🔴 Words Supporting FAKE News
+
+                    </h3>
+
+                    {% if explanation.fake %}
+
+                        <div class="keyword-list">
+
+                            {% for word in explanation.fake %}
+
+                                <span class="keyword fake">
+
+                                    {{ word }}
+
+                                </span>
+
+                            {% endfor %}
+
+                        </div>
+
+                    {% else %}
+
+                        <p>
+
+                            No strong indicators found.
+
+                        </p>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+        AI ASSESSMENT
+        =========================================== -->
+
+        <div class="glass-card">
+
+            <h2>
+
+                AI Assessment
+
+            </h2>
+
+            {% if prediction == "REAL" %}
+
+                <p>
+
+                    FactShield classified this article as
+                    <strong>REAL NEWS</strong>.
+                    Based on the trained Linear SVM model,
+                    the article's writing patterns closely
+                    resemble those found in trusted news
+                    articles from the training dataset.
+
+                </p>
+
+            {% elif prediction == "FAKE" %}
+
+                <p>
+
+                    FactShield classified this article as
+                    <strong>POTENTIALLY FAKE</strong>.
+                    The linguistic characteristics and
+                    writing style are similar to articles
+                    identified as misinformation in the
+                    training dataset. Readers are encouraged
+                    to verify the information using
+                    reputable news organizations.
+
+                </p>
+
+            {% else %}
+
+                <p>
+
+                    The submitted content could not be
+                    analyzed because no valid article
+                    was provided.
+
+                </p>
+
+            {% endif %}
+
+        </div>
+
+        <!-- ==========================================
+        AI SUMMARY
+        =========================================== -->
+
+        <div class="glass-card">
+
+            <h2>
+
+                AI Summary
+
+            </h2>
+
+            <div class="article-preview">
+
+                {% if summary %}
+
+                    {{ summary | safe }}
+
+                {% else %}
+
+                    No summary available.
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+                <!-- ==========================================
+        ARTICLE PREVIEW
+        =========================================== -->
+
+        <div class="glass-card">
+
+            <h2>
+
+                Submitted Article
+
+            </h2>
+
+            <div class="article-preview">
+
+                {% if article %}
+
+                    {{ article | replace('\n', '<br>') | safe }}
+
+                {% else %}
+
+                    No article was submitted.
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+        ACTION BUTTONS
+        =========================================== -->
+
+        <div class="report-buttons">
+
+            <a href="{{ url_for('analyze') }}"
+               class="primary-btn">
+
+                Analyze Another Article
+
+            </a>
+
+            <a href="{{ url_for('home') }}"
+               class="secondary-btn">
+
+                Return Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="{{ url_for('static', filename='js/report.js') }}"></script>
+
+{% endblock %}
