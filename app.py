@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request
-from matplotlib.pylab import record
 
 from services.cleaner import TextCleaner
 from services.predictor import FakeNewsPredictor
@@ -15,7 +14,6 @@ from services.history import HistoryManager
 from services.dashboard import DashboardAnalytics
 from services.explainability import Explainability
 from services.recommendation import RecommendationGenerator
-from services.history import HistoryManager
 
 app = Flask(__name__)
 
