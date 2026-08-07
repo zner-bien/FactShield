@@ -7,19 +7,47 @@ class FakeNewsPredictor:
 
     def __init__(self):
 
+        # ==========================================
+        # PROJECT ROOT DIRECTORY
+        # ==========================================
+
+        base_dir = os.path.dirname(
+            os.path.dirname(
+                os.path.abspath(__file__)
+            )
+        )
+
+        # ==========================================
+        # MODEL PATHS
+        # ==========================================
+
         model_path = os.path.join(
+            base_dir,
             "trained_models",
             "factshield_model.pkl"
         )
 
         vectorizer_path = os.path.join(
+            base_dir,
             "trained_models",
             "tfidf_vectorizer.pkl"
         )
 
-        self.model = joblib.load(model_path)
+        # ==========================================
+        # LOAD MODEL
+        # ==========================================
 
-        self.vectorizer = joblib.load(vectorizer_path)
+        self.model = joblib.load(
+            model_path
+        )
+
+        self.vectorizer = joblib.load(
+            vectorizer_path
+        )
+
+    # ==========================================
+    # PREDICT ARTICLE
+    # ==========================================
 
     def predict(self, article):
 
@@ -34,12 +62,17 @@ class FakeNewsPredictor:
         label = "REAL"
 
         if prediction == 0:
+
             label = "FAKE"
 
-        confidence = None
+        # ==========================================
+        # CONFIDENCE SCORE
+        # ==========================================
 
-        # Models with probability support
-        if hasattr(self.model, "predict_proba"):
+        if hasattr(
+            self.model,
+            "predict_proba"
+        ):
 
             probability = self.model.predict_proba(
                 article_vector
@@ -50,8 +83,10 @@ class FakeNewsPredictor:
                 2
             )
 
-        # LinearSVC (uses decision function)
-        elif hasattr(self.model, "decision_function"):
+        elif hasattr(
+            self.model,
+            "decision_function"
+        ):
 
             score = self.model.decision_function(
                 article_vector
@@ -65,6 +100,10 @@ class FakeNewsPredictor:
         else:
 
             confidence = 95.00
+
+        # ==========================================
+        # RETURN RESULT
+        # ==========================================
 
         return {
 
